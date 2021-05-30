@@ -6,10 +6,11 @@ function App() {
   const [counter, setCounter] = useState(0);
   const decrement = () => {
     setCounter(counter - 1)
+    setCounter(counter - 1)   // счётчик не уменьшится на 2, а только лишь на один
   }
   function increment() {
     setCounter((prev) => prev + 1 )
-    setCounter((prev) => prev + 1 )
+    setCounter((prev) => prev + 1 )   // счётчик увеличится на 2
   }
 
 
