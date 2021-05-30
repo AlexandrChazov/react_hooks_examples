@@ -13,7 +13,7 @@ function App() {
     setCounter((prev) => prev + 1 )   // счётчик увеличится на 2
   }
 
-
+  console.log("render Count")
 
   const [title, setTitle] = useState({
     title: "Initial title",
