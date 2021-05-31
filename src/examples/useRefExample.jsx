@@ -6,15 +6,18 @@ function App() {
   const [message, setMessage] = useState("Initial value");
   const renderCount = useRef(0);                   // useRef не вызывает перерисовку страницы
   const inputRef = useRef(null);
-  const prevValue = useRef('')
+  const prevValue = useRef('');
+
+  console.log(renderCount.current)
+  console.log(prevValue.current)
 
   useEffect(() => {
-    renderCount.current++   //изменение renderCount не вызовет перерисовку
+    renderCount.current++          //renderCount здесь уже = 1, но изменение renderCount не вызовет перерисовку
   })
 
   useEffect(() => {
-    prevValue.current = message;
-  }, [message])
+    prevValue.current = message;   // prevValue здесь уже = "Initial value", но изменение prevValue не вызовет
+  }, [message])              // перерисовку, поэтому на странице будет отображено устаревшее значение
 
   function changeInput(e) {
     setMessage(e.target.value);
