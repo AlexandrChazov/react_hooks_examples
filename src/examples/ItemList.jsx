@@ -5,7 +5,7 @@ const ItemList = ({getItems}) => {
   const [items, setItems] = useState([]);
 
   useEffect(()=>{
-    const newItems = getItems();
+    const newItems = getItems(1);
     setItems(newItems)
     console.log("Oops")             // useEffect будет срабатывать только при изменении функции, а изменилась она
   }, [getItems])              // или нет следит useCallback без него функция всегда разная (функция ни когда не

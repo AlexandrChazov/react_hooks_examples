@@ -12,8 +12,8 @@ const App = () => {
     color: color
   }),[color])
 
-  const generateItems = useCallback(() => {                                 // useCallback кэширует функцию, чтобы она не
-    return new Array(count).fill('').map((el, i)=>`Элемент ${i+1}`)   // равнялась самой себе и useEffect в компоненте
+  const generateItems = useCallback((startNumber) => {                                 // useCallback кэширует функцию, чтобы она не
+    return new Array(count).fill('').map((el, i)=>`Элемент ${i+startNumber}`)   // равнялась самой себе и useEffect в компоненте
   },[count])                                                                 // ItemList повторно вызываться не будет
 
   return (
