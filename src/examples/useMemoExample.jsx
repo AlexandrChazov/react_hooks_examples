@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState, useEffect, useMemo} from 'react';
 
 function complexCalculations(num) {
+  console.log("some calculations...")
   let i = 0;
   while (i < 1000000000) i++;
   return num
@@ -11,11 +12,9 @@ function App() {
   const [number, setNumber] = useState(42);
   const [isGreen, setIsGreen] = useState(true);
 
-  const color = isGreen? "green" : "darkred";
-
   const styleColor = useMemo(()=>({       //кешируем объект styleColor
-    color: color
-  }),[color]);
+    color: isGreen? "green" : "darkred"
+  }),[isGreen]);
 
   useEffect(()=>{
     console.log("color changed")

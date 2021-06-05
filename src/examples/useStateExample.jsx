@@ -1,10 +1,15 @@
 import './App.css';
 import React, {useState} from 'react';
 
+function getInitialState() {
+  console.log("Some calculations...")
+  return Math.trunc(Math.random()*20);
+}
+
 function App() {
 
-  const [counter, setCounter] = useState(0);
-  const decrement = () => {
+  const [counter, setCounter] = useState(getInitialState); //в useState помещён колбэк, а не вызов функции, иначе при
+  const decrement = () => {                                 //каждой перерисовке функция будет пересчитываться
     setCounter(counter - 1)
     setCounter(counter - 1)   // счётчик уменьшится не на 2, а только лишь на один
   }

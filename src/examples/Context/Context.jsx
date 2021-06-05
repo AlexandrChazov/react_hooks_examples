@@ -6,12 +6,8 @@ export default function Context({children}) {               //в пропсах 
 
   const [alert, setAlert] = useState(false);
 
-  const toggleAlert = () => {
-    setAlert(prev=>!prev)
-  }
-
   return (
-      <MyContext.Provider value={{alert, toggleAlert}}>
+      <MyContext.Provider value={{alert, setAlert}}>
         {children}
       </MyContext.Provider>
   )
