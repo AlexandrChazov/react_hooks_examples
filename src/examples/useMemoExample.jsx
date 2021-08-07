@@ -12,9 +12,9 @@ function App() {
   const [number, setNumber] = useState(42);
   const [isGreen, setIsGreen] = useState(true);
 
-  const styleColor = useMemo(()=>({       //кешируем объект styleColor
-    color: isGreen? "green" : "darkred"
-  }),[isGreen]);
+  const styleColor = useMemo(()=>({       // кешируем объект styleColor, т.о. useMemo используется для
+    color: isGreen? "green" : "darkred"          // запоминания значений и отслеживания изменений объекта
+  }),[isGreen]);                           // ведь иначе JS всегда будет считать что объект изменился
 
   useEffect(()=>{
     console.log("color changed")
@@ -23,13 +23,13 @@ function App() {
                                     // и useEffect всегда будет срабатывать
 
   const computedNumber = useMemo(()=> {    // computedNumber будет пересчитанна только при изменении number
-    return complexCalculations(number)
-  }, [number]) //
-
+    return complexCalculations(number)            // Использовать useEffect здесь не получиться, так как он ни чего
+  }, [number])                              // не возвращает, а useMemo вернёт нам значение и присвоит
+                                                  // его переменной computedNumber
   return (
       <div>
         <h1 style={styleColor}>Вычисляемое число {computedNumber}</h1>
-        <div className="btn btn-primary" onClick={()=> setNumber((prev)=>prev+1)}>Change Number</div>
+        <div className="btn btn-primary" onClick={()=> setNumber((e)=>e+1)}>Change Number</div>
         <div className="btn btn-success" onClick={()=>setIsGreen(isGreen=>!isGreen)}>Change Color</div>
       </div>
   );

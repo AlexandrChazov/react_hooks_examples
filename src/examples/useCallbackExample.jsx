@@ -13,9 +13,9 @@ const App = () => {
   }),[color])
 
   const generateItems = useCallback((startNumber) => {                                 // useCallback кэширует функцию, чтобы она не
-    return new Array(count).fill('').map((el, i)=>`Элемент ${i+startNumber}`)   // равнялась самой себе. Теперь useEffect в
-  },[count])                                                                 // компоненте ItemList повторно вызываться не будет
-
+    return new Array(count).fill('').map((el, i)=>`Элемент ${i+startNumber}`)    // равнялась самой себе. Теперь useEffect в
+  },[count])                                                                            // компоненте ItemList повторно вызываться не будет
+                        // useCallback возвращает не результат вызова функции, а саму функцию
   return (
       <div>
         <h1 style={textStyle}>Счётчик {count}</h1>

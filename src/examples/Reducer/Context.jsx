@@ -9,7 +9,9 @@ export default function Context({children}) {               //в пропсах 
     switch (action.type) {
       case TOGGLE_ALERT: {
         return {
-          ...state, alert: !state.alert, alertText: action.alertText
+          ...state,
+          alert: !state.alert,
+          alertText: action.alertText
         }
       }
       default: {

@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
 
-const useInput = (initialValue) => {
+const useInput = (initialValue) => {                      // usehooks.com - сайт, где можно взять готовые хуки
   const [value, setValue] = useState(initialValue);
   const onChange = event => {
     setValue(event.target.value);

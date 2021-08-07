@@ -7,9 +7,9 @@ const ItemList = ({generateItems, textStyle}) => {
   useEffect(()=>{
     const newItems = generateItems(10);
     setItems(newItems)
-    console.log("useEffect отработал")             // useEffect будет срабатывать только при изменении функции, а изменилась она
+    console.log("useEffect отработал")    // useEffect будет срабатывать только при изменении функции, а изменилась она
   }, [generateItems])              // или нет следит useCallback без него функция всегда разная (функция ни когда не
-                                    // равна сама себе)
+                                         // равна сама себе)
   return (
       <ul style={textStyle}>
         {items.map((i)=><li key={i}>{i}</li>)}

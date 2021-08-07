@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import App from './examples/customHooksExample';
+import App from './examples/useReducerExample';
 
 ReactDOM.render(
   <React.StrictMode>

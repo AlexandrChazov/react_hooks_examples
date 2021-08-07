@@ -14,8 +14,8 @@ function App() {
     setCounter(counter - 1)   // счётчик уменьшится не на 2, а только лишь на один
   }
   function increment() {
-    setCounter((e) => e + 1 )   // передаём колбек
-    setCounter((e) => e + 1 )   // счётчик увеличится на 2
+    setCounter(e => e + 1 )   // передаём колбек
+    setCounter(e => e + 1 )   // счётчик увеличится на 2
   }
 
   console.log("render Count")
@@ -24,9 +24,10 @@ function App() {
     title: "Initial title",
     id: 2
   })
+
   function changeTitle() {
-    setTitle({
-      ...title,
+    setTitle({          //такая запись нужна чтобы изменить поле title объекта, в классовых компонентах
+      ...title,               //достаточно написать {title: "New Title"}
       title: "New Title"
     })
   }
