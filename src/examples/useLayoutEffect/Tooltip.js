@@ -9,8 +9,8 @@ const Tooltip = ({ children, buttonCoordinates }) => {
     useLayoutEffect(() => {
         // на этом моменте Реакт уже построил дом дерево и готов его нарисовать
         // мы же измеряем высоту Тултипа прежде чем Реакт отдаст страницу браузеру
-        // на отрисовку
-        // и меняем его положение прежде чем страница начнёт рисоваться браузером
+        // на отрисовку и при необходимости
+        // меняем его положение прежде чем страница начнёт рисоваться браузером
         const { height } = ref.current.getBoundingClientRect();
         setTooltipHeight(height);
         console.log('Measured tooltip height: ' + height);
@@ -22,7 +22,7 @@ const Tooltip = ({ children, buttonCoordinates }) => {
         tooltipX = buttonCoordinates.left;
         tooltipY = buttonCoordinates.top - tooltipHeight;
         if (tooltipY < 0) {
-            // It doesn't fit above, so place below.
+            // Тултип вышел за пределы экрана, размещаем его ниже кнопки.
             tooltipY = buttonCoordinates.bottom;
         }
     }
