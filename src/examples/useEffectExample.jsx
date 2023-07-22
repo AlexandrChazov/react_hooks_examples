@@ -11,11 +11,21 @@ function App() {
   console.log("render App");
 
   useEffect(() => {
+    let isIgnoreResponse = false;
+
     console.log("render useEffect");
     fetch(`https://jsonplaceholder.typicode.com/${page}/1`)
       .then(response => response.json())
-      .then(json => setInfo(json))
+      .then(json => {
+        // нужно для ситуации когда ответ от сервера ещё не пришёл, а пользователь уже изменил "page"
+        // и значит данные потеряли свою актуальность
+        if (!isIgnoreResponse) {
+          setInfo(json)
+        }
+      })
     return () => {
+      // если пользователь поменяет страницу данные будут считаться уже не актуальными
+      isIgnoreResponse = true;
       console.log("Exit effect")      // при первоначальной отрисовке console.log не сработает
     }                                 // он сработает при выходе из эффекта, перед новым срабатыванием
   }, [page])                    // при изменении page
